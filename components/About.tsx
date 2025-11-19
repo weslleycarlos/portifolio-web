@@ -60,7 +60,7 @@ export const About: React.FC = () => {
             <div className="relative h-full w-full rounded-2xl overflow-hidden border border-white/10 glass-card p-2 group">
                 <div className="h-full w-full bg-slate-900/80 rounded-xl overflow-hidden relative">
                    <img 
-                     src="https://picsum.photos/800/800?grayscale" 
+                     src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80" 
                      alt="Coding workspace" 
                      className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500 scale-105 group-hover:scale-100"
                    />

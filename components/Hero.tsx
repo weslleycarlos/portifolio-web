@@ -37,7 +37,7 @@ export const Hero: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-4xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight mb-6"
         >
-          Weslley Carlos de Morais
+          Weslley Carlos
           <br />
           <span className="text-gradient text-3xl md:text-5xl lg:text-6xl block mt-4">Desenvolvedor Full-Stack</span>
         </motion.h1>
@@ -48,7 +48,7 @@ export const Hero: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="max-w-2xl mx-auto text-lg md:text-xl text-slate-400 mb-10 leading-relaxed"
         >
-          Criando experiências modernas, escaláveis e funcionais na web.
+          Aprendendo a criar experiências modernas, escaláveis e funcionais na web.
           <br className="hidden md:block" />
           Focado em entregar soluções ponta a ponta com qualidade e performance.
         </motion.p>

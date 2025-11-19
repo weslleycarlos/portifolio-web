@@ -1,18 +1,47 @@
 import React, { useState } from 'react';
 import { SectionWrapper } from './ui/SectionWrapper';
 import { SOCIAL_LINKS } from '../constants';
-import { Send, CheckCircle2 } from 'lucide-react';
+import { Send, CheckCircle2, AlertCircle } from 'lucide-react';
 
 export const Contact: React.FC = () => {
-  const [formState, setFormState] = useState<'idle' | 'submitting' | 'success'>('idle');
+  const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormState('submitting');
-    // Simulate API call
-    setTimeout(() => {
-      setFormState('success');
-    }, 1500);
+
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+
+    const YOUR_EMAIL = "wcarlos_col@hotmail.com"; 
+
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${YOUR_EMAIL}`, {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          message: data.message,
+          _subject: `Novo contato do Portfólio de ${data.name}`, 
+          _template: 'table', 
+          _captcha: 'true' 
+        })
+      });
+
+      if (response.ok) {
+        setFormState('success');
+      } else {
+        console.error('Erro no envio');
+        setFormState('error');
+      }
+    } catch (error) {
+      console.error('Erro de rede:', error);
+      setFormState('error');
+    }
   };
 
   return (
@@ -53,7 +82,7 @@ export const Contact: React.FC = () => {
           {/* Right Form */}
           <div className="bg-slate-950/50 backdrop-blur-sm p-6 rounded-2xl border border-white/5">
             {formState === 'success' ? (
-              <div className="h-full flex flex-col items-center justify-center text-center py-12">
+              <div className="h-full flex flex-col items-center justify-center text-center py-12 animate-in fade-in zoom-in duration-500">
                 <div className="w-16 h-16 bg-green-500/20 text-green-500 rounded-full flex items-center justify-center mb-4">
                   <CheckCircle2 size={32} />
                 </div>
@@ -61,7 +90,7 @@ export const Contact: React.FC = () => {
                 <p className="text-slate-400">Obrigado pelo contato. Retornarei em breve.</p>
                 <button 
                   onClick={() => setFormState('idle')}
-                  className="mt-6 text-accent-400 hover:text-accent-300 font-medium"
+                  className="mt-6 text-accent-400 hover:text-accent-300 font-medium hover:underline"
                 >
                   Enviar outra mensagem
                 </button>
@@ -73,6 +102,7 @@ export const Contact: React.FC = () => {
                   <input 
                     type="text" 
                     id="name"
+                    name="name" 
                     required
                     className="w-full px-4 py-3 rounded-xl bg-slate-900 border border-white/10 focus:border-accent-400 focus:ring-1 focus:ring-accent-400 outline-none transition-all text-white placeholder-slate-600"
                     placeholder="Seu nome"
@@ -83,6 +113,7 @@ export const Contact: React.FC = () => {
                   <input 
                     type="email" 
                     id="email"
+                    name="email"
                     required
                     className="w-full px-4 py-3 rounded-xl bg-slate-900 border border-white/10 focus:border-accent-400 focus:ring-1 focus:ring-accent-400 outline-none transition-all text-white placeholder-slate-600"
                     placeholder="seu@email.com"
@@ -92,12 +123,21 @@ export const Contact: React.FC = () => {
                   <label htmlFor="message" className="block text-sm font-medium text-slate-400 mb-1.5">Mensagem</label>
                   <textarea 
                     id="message"
+                    name="message"
                     required
                     rows={4}
                     className="w-full px-4 py-3 rounded-xl bg-slate-900 border border-white/10 focus:border-accent-400 focus:ring-1 focus:ring-accent-400 outline-none transition-all text-white placeholder-slate-600 resize-none"
                     placeholder="Olá, gostaria de falar sobre..."
                   />
                 </div>
+
+                {formState === 'error' && (
+                  <div className="flex items-center gap-2 text-red-400 text-sm bg-red-400/10 p-3 rounded-lg">
+                    <AlertCircle size={16} />
+                    <span>Ocorreu um erro ao enviar. Tente novamente.</span>
+                  </div>
+                )}
+
                 <button 
                   type="submit"
                   disabled={formState === 'submitting'}

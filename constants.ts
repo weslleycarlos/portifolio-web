@@ -17,12 +17,12 @@ export const SOCIAL_LINKS: SocialLink[] = [
   },
   {
     name: 'LinkedIn',
-    url: 'https://linkedin.com', // Update if a specific URL is provided later
+    url: 'https://br.linkedin.com/in/weslley-carlos-de-morais-78b9b6b1', // Update if a specific URL is provided later
     icon: Linkedin,
   },
   {
     name: 'Email',
-    url: 'mailto:weslley@example.com', // Update with real email if provided
+    url: 'mailto:wcarlos_col@hotmail.com', // Update with real email if provided
     icon: Mail,
   },
 ];
@@ -67,7 +67,7 @@ export const PROJECTS: Project[] = [
     description: 'Sistema completo de gestão para representantes comerciais, incluindo pedidos, clientes e produtos.',
     technologies: ['Node.js', 'React', 'Prisma', 'PostgreSQL', 'TypeScript'],
     githubUrl: 'https://github.com/weslleycarlos/representacao-comercial',
-    imageUrl: 'https://picsum.photos/800/600?random=1',
+    imageUrl: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1200&q=80',
     featured: true,
   },
   {
@@ -76,7 +76,7 @@ export const PROJECTS: Project[] = [
     description: 'Website institucional moderno para um projeto de igreja focado em casais.',
     technologies: ['React', 'Tailwind', 'JavaScript'],
     githubUrl: 'https://github.com/weslleycarlos/website-cpi',
-    imageUrl: 'https://picsum.photos/800/600?random=2',
+    imageUrl: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1200&q=80',
     featured: true,
   },
   {
@@ -85,7 +85,7 @@ export const PROJECTS: Project[] = [
     description: 'Sistema simples para gerenciamento e acompanhamento básico de presos.',
     technologies: ['Python', 'SQLite', 'Bootstrap'],
     githubUrl: 'https://github.com/weslleycarlos/controle-presos',
-    imageUrl: 'https://picsum.photos/800/600?random=3',
+    imageUrl: 'https://images.unsplash.com/photo-1543536833-6d65fcc64f66?auto=format&fit=crop&w=1200&q=80',
     featured: false,
   },
   {
@@ -94,7 +94,7 @@ export const PROJECTS: Project[] = [
     description: 'Web Scraper para coletar e processar dados do Diário Oficial dos Municípios do Mato Grosso.',
     technologies: ['Python', 'Selenium', 'Pandas', 'Data Processing'],
     githubUrl: 'https://github.com/weslleycarlos/web-scraper',
-    imageUrl: 'https://picsum.photos/800/600?random=4',
+    imageUrl: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80',
     featured: false,
   },
 ];
