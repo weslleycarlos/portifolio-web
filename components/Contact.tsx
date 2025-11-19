@@ -28,7 +28,8 @@ export const Contact: React.FC = () => {
           message: data.message,
           _subject: `Novo contato do Portfólio de ${data.name}`, 
           _template: 'table', 
-          _captcha: 'true' 
+          _replyto: data.email, 
+          _captcha: 'false' 
         })
       });
 
