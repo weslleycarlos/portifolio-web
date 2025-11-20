@@ -65,7 +65,7 @@ export const PROJECTS: Project[] = [
   {
     id: '1',
     title: 'Representação Comercial',
-    description: 'Sistema que criei para ajudar meu pai, representante, a organizar pedidos. Foi onde pratiquei bastante full-stack com React, Node e Prisma.',
+    description: 'Sistema que criei para ajudar a organizar pedidos. Foi onde pratiquei bastante full-stack com React, Node e Prisma.',
     technologies: ['Node.js', 'React', 'Prisma', 'PostgreSQL', 'TypeScript'],
     githubUrl: 'https://github.com/weslleycarlos/representacao-comercial',
     imageUrl: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1200&q=80',
