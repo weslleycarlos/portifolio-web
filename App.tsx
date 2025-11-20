@@ -4,10 +4,13 @@ import { Hero } from './components/Hero';
 import { About } from './components/About';
 import { Skills } from './components/Skills';
 import { Projects } from './components/Projects';
+import { ProfessionalExperience } from './components/ProfessionalExperience'
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { ArrowUp } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+
+const MotionButton = motion.button as any;
 
 const App: React.FC = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -42,6 +45,7 @@ const App: React.FC = () => {
       <main className="relative z-10 flex flex-col gap-0">
         <Hero />
         <About />
+        <ProfessionalExperience />
         <Projects />
         <Skills />
         <Contact />
@@ -51,7 +55,7 @@ const App: React.FC = () => {
 
       <AnimatePresence>
         {showScrollTop && (
-          <motion.button
+          <MotionButton
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
@@ -60,7 +64,7 @@ const App: React.FC = () => {
             aria-label="Scroll to top"
           >
             <ArrowUp size={24} />
-          </motion.button>
+          </MotionButton>
         )}
       </AnimatePresence>
     </div>

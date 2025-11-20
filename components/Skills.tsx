@@ -8,7 +8,7 @@ export const Skills: React.FC = () => {
       <div className="text-center max-w-3xl mx-auto mb-16">
         <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Habilidades <span className="text-accent-400">& Tecnologias</span></h2>
         <p className="text-slate-400 text-lg">
-          Ferramentas e tecnologias que tenho utilizado para transformar ideias em realidade.
+          Tecnologias que uso no dia a dia e que realmente fazem parte dos meus projetos.
         </p>
       </div>
 

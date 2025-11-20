@@ -4,6 +4,7 @@ import { Project, SkillCategory, SocialLink } from './types';
 export const NAV_LINKS = [
   { name: 'Início', href: '#hero' },
   { name: 'Sobre', href: '#about' },
+  { name: 'Experiência', href: '#experience' },
   { name: 'Projetos', href: '#projects' },
   { name: 'Skills', href: '#skills' },
   { name: 'Contato', href: '#contact' },
@@ -64,7 +65,7 @@ export const PROJECTS: Project[] = [
   {
     id: '1',
     title: 'Representação Comercial',
-    description: 'Sistema completo de gestão para representantes comerciais, incluindo pedidos, clientes e produtos.',
+    description: 'Sistema que criei para ajudar meu pai, representante, a organizar pedidos. Foi onde pratiquei bastante full-stack com React, Node e Prisma.',
     technologies: ['Node.js', 'React', 'Prisma', 'PostgreSQL', 'TypeScript'],
     githubUrl: 'https://github.com/weslleycarlos/representacao-comercial',
     imageUrl: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1200&q=80',
@@ -73,7 +74,7 @@ export const PROJECTS: Project[] = [
   {
     id: '2',
     title: 'Website CPI',
-    description: 'Website institucional moderno para um projeto de igreja focado em casais.',
+    description: 'Site que desenvolvi para um projeto de casais da igreja. Foquei em deixar tudo leve, bonito e fácil de atualizar.',
     technologies: ['React', 'Tailwind', 'JavaScript'],
     githubUrl: 'https://github.com/weslleycarlos/website-cpi',
     imageUrl: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1200&q=80',
@@ -82,7 +83,7 @@ export const PROJECTS: Project[] = [
   {
     id: '3',
     title: 'Controle de Presos',
-    description: 'Sistema simples para gerenciamento e acompanhamento básico de presos.',
+    description: 'Aplicação criada para organizar e acompanhar dados de presos. É um projeto mais simples e direto.',
     technologies: ['Python', 'SQLite', 'Bootstrap'],
     githubUrl: 'https://github.com/weslleycarlos/controle-presos',
     imageUrl: 'https://images.unsplash.com/photo-1543536833-6d65fcc64f66?auto=format&fit=crop&w=1200&q=80',
@@ -91,7 +92,7 @@ export const PROJECTS: Project[] = [
   {
     id: '4',
     title: 'Web Scraper - Diário Oficial',
-    description: 'Web Scraper para coletar e processar dados do Diário Oficial dos Municípios do Mato Grosso.',
+    description: 'Ferramenta que automatiza a coleta de dados do Diário Oficial dos Municípios do MT.',
     technologies: ['Python', 'Selenium', 'Pandas', 'Data Processing'],
     githubUrl: 'https://github.com/weslleycarlos/web-scraper',
     imageUrl: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80',

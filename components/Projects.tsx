@@ -12,7 +12,7 @@ export const Projects: React.FC = () => {
         <div>
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Projetos em <span className="text-accent-400">Destaque</span></h2>
           <p className="text-slate-400 max-w-md">
-            Uma seleção de projetos reais que demonstram minha capacidade técnica e evolução.
+            Alguns dos projetos que venho construindo para aprender, testar ideias e evoluir como dev.
           </p>
         </div>
         <a 

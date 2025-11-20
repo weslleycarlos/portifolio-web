@@ -58,7 +58,7 @@ export const Contact: React.FC = () => {
             <div>
               <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Vamos <span className="text-accent-400">Conversar?</span></h2>
               <p className="text-slate-400 text-lg">
-                Interessado em trabalhar juntos ou tem alguma dúvida? Sinta-se à vontade para entrar em contato. Estou sempre aberto a discutir novos projetos e oportunidades.
+                Se quiser trocar uma ideia, pedir ajuda ou conversar sobre algum projeto, é só me chamar.
               </p>
             </div>
 

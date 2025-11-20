@@ -27,7 +27,7 @@ export const Hero: React.FC = () => {
           transition={{ duration: 0.8 }}
         >
           <div className="inline-block mb-4 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
-            <span className="text-sm font-medium text-accent-400">Disponível para projetos e freelance</span>
+            <span className="text-sm font-medium text-accent-400">Pronto para novos desafios e projetos legais</span>
           </div>
         </motion.div>
 
@@ -48,9 +48,9 @@ export const Hero: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="max-w-2xl mx-auto text-lg md:text-xl text-slate-400 mb-10 leading-relaxed"
         >
-          Aprendendo a criar experiências modernas, escaláveis e funcionais na web.
+          Desenvolvendo ideias e transformando código em soluções reais.
           <br className="hidden md:block" />
-          Focado em entregar soluções ponta a ponta com qualidade e performance.
+          Busco criar interfaces modernas e aplicações que fazem sentido de verdade para quem usa.
         </motion.p>
 
         <motion.div 
