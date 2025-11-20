@@ -37,9 +37,9 @@ export const Hero: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-4xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight mb-6"
         >
-          Weslley Carlos
+          Desenvolvedor
           <br />
-          <span className="text-gradient text-3xl md:text-5xl lg:text-6xl block mt-4">Desenvolvedor Full-Stack</span>
+          <span className="text-gradient text-3xl md:text-5xl lg:text-6xl block mt-4">Full-Stack</span>
         </motion.h1>
 
         <motion.p 
@@ -75,17 +75,6 @@ export const Hero: React.FC = () => {
           </button>
         </motion.div>
       </div>
-
-      {/* Scroll Indicator */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-      >
-        <div className="w-[1px] h-12 bg-gradient-to-b from-slate-500 to-transparent" />
-        {/*<span className="text-xs text-slate-500 uppercase tracking-widest">Scroll</span>*/}
-      </motion.div>
     </section>
   );
 };
