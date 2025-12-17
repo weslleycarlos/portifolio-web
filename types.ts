@@ -14,7 +14,7 @@ export interface Project {
 export interface SkillCategory {
   title: string;
   icon: LucideIcon;
-  skills: { name: string; level: number }[];
+  skills: { name: string }[];
 }
 
 export interface SocialLink {

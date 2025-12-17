@@ -14,29 +14,24 @@ export const Skills: React.FC = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
         {SKILL_CATEGORIES.map((category) => (
-          <div 
+          <div
             key={category.title}
-            className="glass-card rounded-2xl p-6 hover:bg-white/[0.07] transition-colors duration-300 group"
+            className="glass-card rounded-2xl p-6 hover:bg-white/[0.07] transition-colors duration-300 group h-full"
           >
-            <div className="w-12 h-12 rounded-xl bg-accent-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-              <category.icon className="w-6 h-6 text-accent-400" />
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-12 h-12 rounded-xl bg-accent-500/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shrink-0">
+                <category.icon className="w-6 h-6 text-accent-400" />
+              </div>
+              <h3 className="text-xl font-bold">{category.title}</h3>
             </div>
-            
-            <h3 className="text-xl font-bold mb-6">{category.title}</h3>
-            
-            <div className="space-y-5">
+
+            <div className="flex flex-wrap gap-3">
               {category.skills.map((skill) => (
-                <div key={skill.name}>
-                  <div className="flex justify-between mb-2">
-                    <span className="text-sm font-medium text-slate-300">{skill.name}</span>
-                    <span className="text-sm text-slate-500">{skill.level}%</span>
-                  </div>
-                  <div className="h-1.5 w-full bg-slate-700/50 rounded-full overflow-hidden">
-                    <div 
-                      className="h-full bg-gradient-to-r from-sky-400 to-emerald-400 rounded-full"
-                      style={{ width: `${skill.level}%` }}
-                    />
-                  </div>
+                <div
+                  key={skill.name}
+                  className="px-4 py-2 rounded-lg bg-slate-800/50 border border-slate-700/50 hover:border-accent-500/30 hover:bg-accent-500/5 transition-all duration-300"
+                >
+                  <span className="text-sm font-medium text-slate-300">{skill.name}</span>
                 </div>
               ))}
             </div>

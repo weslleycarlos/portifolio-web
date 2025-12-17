@@ -30,33 +30,33 @@ export const SOCIAL_LINKS: SocialLink[] = [
 
 export const SKILL_CATEGORIES: SkillCategory[] = [
   {
-    title: 'Frontend',
-    icon: Layout,
-    skills: [
-      { name: 'React', level: 85 },
-      { name: 'TypeScript', level: 80 },
-      { name: 'Tailwind CSS', level: 90 },
-      { name: 'HTML/CSS', level: 95 },
-    ],
-  },
-  {
-    title: 'Backend',
-    icon: Terminal,
-    skills: [
-      { name: 'Node.js', level: 75 },
-      { name: 'Python', level: 70 },
-      { name: 'Express', level: 75 },
-      { name: 'REST APIs', level: 80 },
-    ],
-  },
-  {
-    title: 'Banco de Dados & Ferramentas',
+    title: 'Backend & Banco de Dados',
     icon: Database,
     skills: [
-      { name: 'PostgreSQL', level: 70 },
-      { name: 'Git/GitHub', level: 85 },
-      { name: 'Docker', level: 60 },
-      { name: 'VS Code', level: 90 },
+      { name: 'Oracle APEX' },
+      { name: 'PL/SQL' },
+      { name: 'REST APIs' },
+      { name: 'Node.js' },
+      { name: 'Python' },
+    ],
+  },
+  {
+    title: 'Frontend (Estudando)',
+    icon: Layout,
+    skills: [
+      { name: 'React' },
+      { name: 'TypeScript' },
+      { name: 'Tailwind CSS' },
+      { name: 'HTML/CSS' },
+    ],
+  },
+  {
+    title: 'Ferramentas',
+    icon: Terminal,
+    skills: [
+      { name: 'Git/GitHub' },
+      { name: 'VS Code' },
+      { name: 'Docker' },
     ],
   },
 ];

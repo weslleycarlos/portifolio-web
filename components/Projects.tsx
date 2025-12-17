@@ -15,9 +15,9 @@ export const Projects: React.FC = () => {
             Alguns dos projetos que venho construindo para aprender, testar ideias e evoluir como dev.
           </p>
         </div>
-        <a 
-          href="https://github.com/weslleycarlos" 
-          target="_blank" 
+        <a
+          href="https://github.com/weslleycarlos"
+          target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 text-accent-400 hover:text-accent-500 font-medium transition-colors"
         >
@@ -27,7 +27,7 @@ export const Projects: React.FC = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {PROJECTS.map((project) => (
-          <div 
+          <div
             key={project.id}
             className="group relative rounded-2xl overflow-hidden border border-white/5 bg-slate-900 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_-10px_rgba(56,189,248,0.3)] hover:border-accent-500/30"
             onMouseEnter={() => setHoveredId(project.id)}
@@ -36,15 +36,15 @@ export const Projects: React.FC = () => {
             {/* Image Container */}
             <div className="relative h-64 overflow-hidden">
               <div className="absolute inset-0 bg-slate-950/20 group-hover:bg-transparent transition-colors z-10" />
-              <img 
-                src={project.imageUrl} 
-                alt={project.title} 
+              <img
+                src={project.imageUrl}
+                alt={project.title}
                 className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out"
               />
-              
+
               {/* Links overlay on hover */}
-              <div className={`absolute inset-0 z-20 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center gap-4 transition-all duration-300 ${hoveredId === project.id ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-                <a 
+              <div className={`absolute inset-0 z-20 bg-slate-950/60 flex items-center justify-center gap-4 transition-all duration-300 ${hoveredId === project.id ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+                <a
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -54,7 +54,7 @@ export const Projects: React.FC = () => {
                   <Github size={20} />
                 </a>
                 {project.liveUrl && (
-                  <a 
+                  <a
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -77,8 +77,8 @@ export const Projects: React.FC = () => {
               </p>
               <div className="flex flex-wrap gap-2">
                 {project.technologies.map((tech) => (
-                  <span 
-                    key={tech} 
+                  <span
+                    key={tech}
                     className="px-3 py-1 text-xs font-medium text-slate-300 bg-slate-800 rounded-full border border-white/5 group-hover:border-accent-400/20 transition-colors duration-300"
                   >
                     {tech}
