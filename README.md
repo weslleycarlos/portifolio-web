@@ -1,62 +1,41 @@
-# Portfólio Pessoal - Weslley Carlos de Morais
+# Portfólio — Weslley Carlos de Morais
 
-Este é um projeto de portfólio moderno, minimalista e responsivo, desenvolvido para apresentar projetos e habilidades de desenvolvimento Full-Stack. O site utiliza práticas modernas de UI/UX, incluindo Glassmorphism, efeito Parallax e animações suaves.
+Portfólio pessoal em React, TypeScript e Vite. A identidade visual usa tipografia editorial, divisórias finas, fundo claro, verde e blocos escuros para apresentar projetos, experiência profissional, tecnologias e contato.
 
-## 🚀 Tecnologias Utilizadas
+## Executar
 
-- **React 18**: Biblioteca JavaScript para construção de interfaces.
-- **TypeScript**: Superset tipado de JavaScript.
-- **Vite**: Build tool rápida para desenvolvimento web moderno.
-- **Tailwind CSS**: Framework CSS utilitário para estilização.
-- **Framer Motion**: Biblioteca para animações e gestos.
-- **Lucide React**: Biblioteca de ícones moderna e leve.
+Com Node.js 22.12+ e npm:
 
-## 📋 Pré-requisitos
+```bash
+npm ci
+npm run dev
+```
 
-Antes de começar, você precisará ter instalado em sua máquina:
+O endereço local é exibido pelo Vite. O projeto mantém a base `/portifolio-web/` para publicação no GitHub Pages.
 
-- [Node.js](https://nodejs.org/) (Versão 18 ou superior recomendada)
-- Um gerenciador de pacotes (o Node.js já vem com o `npm`)
+```bash
+npm test       # Traduções, renderização, navegação e envio de contato com serviço simulado
+npm run build # TypeScript e compilação de produção
+npm run preview
+npm run deploy # Publicação no GitHub Pages
+```
 
-## 🔧 Como Rodar o Projeto Localmente
+## Conteúdo e idiomas
 
-Siga os passos abaixo para configurar o ambiente de desenvolvimento:
+- `content.ts`: textos de projetos, apresentação, experiência, tecnologias e contato em português, inglês e espanhol.
+- `i18n.tsx`: textos do cabeçalho e abertura, contexto de idioma e metadados. A prioridade inicial é `?lang=pt-BR|en|es`, preferência salva, idiomas do navegador e, por fim, português.
+- `constants.ts`: repositórios, contatos e tecnologias. Os textos dos quatro projetos em `content.ts` seguem a mesma ordem de `PROJECTS`.
+- `index.css`: identidade visual, componentes e regras responsivas.
+- `components/`: seções individuais.
 
-1. **Clone o repositório ou baixe os arquivos:**
-   Se você baixou o zip, extraia-o em uma pasta de sua preferência.
+A troca de idioma atualiza a URL sem recarregar, salva a preferência quando o navegador permite e atualiza o título, a descrição e o atributo `lang` do documento. Nomes de tecnologias e marcas são preservados. Os metadados iniciais do HTML estão em português; não há renderização de páginas separadas no servidor para cada idioma.
 
-2. **Abra o terminal na pasta do projeto:**
-   ```bash
-   cd nome-da-pasta-do-projeto
-   ```
+## Contato
 
-3. **Instale as dependências:**
-   Execute o comando abaixo para baixar todas as bibliotecas necessárias listadas no `package.json`.
-   ```bash
-   npm install
-   ```
+O formulário usa a integração existente com FormSubmit e envia para o e-mail definido em `constants.ts`. Há validação nativa, proteção contra envios duplicados, campo de prevenção de spam, limite de 15 segundos e estados de envio, sucesso e erro traduzidos. O sucesso exige confirmação explícita do serviço. O e-mail direto está disponível como alternativa.
 
-4. **Inicie o servidor de desenvolvimento:**
-   ```bash
-   npm run dev
-   ```
+A entrega real depende da ativação do endereço no FormSubmit e da disponibilidade do serviço. Os testes simulam as respostas e não enviam mensagens reais.
 
-5. **Acesse no navegador:**
-   Após iniciar, o terminal mostrará um link (geralmente `http://localhost:5173`). Clique nele ou cole no seu navegador para ver o site rodando.
+## Acessibilidade
 
-## 📦 Scripts Disponíveis
-
-- `npm run dev`: Inicia o servidor de desenvolvimento local.
-- `npm run build`: Compila o projeto para produção (gera a pasta `dist`).
-- `npm run preview`: Visualiza a versão de produção localmente após o build.
-
-## 🎨 Personalização
-
-Os dados do site (links, projetos, textos) estão centralizados para facilitar a edição:
-
-- **`constants.ts`**: Edite este arquivo para alterar links do menu, projetos listados, skills e links de redes sociais.
-- **`components/`**: Componentes individuais de cada seção (Hero, About, Projects, etc.).
-
-## 📄 Licença
-
-Este projeto é de uso pessoal e livre para estudos. Sinta-se à vontade para usar o código como base para seu próprio portfólio.
+Navegação por âncoras, link para pular ao conteúdo, foco visível, rótulos de formulário, indicação do idioma ativo, menu móvel com fechamento por Escape e suporte à preferência de movimento reduzido. O conteúdo permanece visível sem depender de animações de entrada.

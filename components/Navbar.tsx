@@ -1,120 +1,49 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, Code2 } from 'lucide-react';
-import { NAV_LINKS } from '../constants';
-import { motion, AnimatePresence } from 'framer-motion';
-
-export const Navbar: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('hero');
-
-  // Handle scroll to highlight active section
+import { useEffect, useRef, useState } from 'react';
+import { ArrowUpRight, Menu, X } from 'lucide-react';
+import { languages, useLanguage } from '../i18n';
+const sections = ['hero', 'projects', 'about', 'experience', 'skills', 'contact'];
+export function Navbar() {
+  const { locale, setLocale, t } = useLanguage();
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState('hero');
+  const headerRef = useRef<HTMLElement>(null);
+  const toggleRef = useRef<HTMLButtonElement>(null);
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = NAV_LINKS.map(link => link.href.substring(1));
-      const scrollPosition = window.scrollY + 100;
-
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element && 
-            element.offsetTop <= scrollPosition && 
-            (element.offsetTop + element.offsetHeight) > scrollPosition) {
-          setActiveSection(section);
-        }
-      }
+    const updateActive = () => {
+      let current = 'hero';
+      sections.forEach(id => { if ((document.getElementById(id)?.getBoundingClientRect().top ?? Infinity) <= 180) current = id; });
+      setActive(current);
     };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    updateActive();
+    window.addEventListener('scroll', updateActive, { passive: true });
+    return () => window.removeEventListener('scroll', updateActive);
   }, []);
-
-  const toggleMenu = () => setIsOpen(!isOpen);
-
-  const scrollToSection = (href: string) => {
-    setIsOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  return (
-    <header className="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
-          <div 
-            className="flex items-center gap-2 cursor-pointer group"
-            onClick={() => scrollToSection('#hero')}
-          >
-            <div className="p-2 bg-accent-500/10 rounded-lg border border-accent-500/20 group-hover:bg-accent-500/20 group-hover:border-accent-400/50 transition-all duration-300 group-hover:scale-110">
-              <Code2 className="w-6 h-6 text-accent-400 group-hover:text-sky-300 transition-colors duration-300" />
-            </div>
-            <span className="text-lg font-display font-bold tracking-tight text-slate-100">
-              Weslley<span className="text-accent-400 group-hover:text-sky-300 transition-colors duration-300">Carlos</span>
-            </span>
-          </div>
-
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
-            {NAV_LINKS.filter(link => link.href !== '#contact').map((link) => (
-              <button
-                key={link.name}
-                onClick={() => scrollToSection(link.href)}
-                className={`text-sm font-medium transition-colors duration-300 ${
-                  activeSection === link.href.substring(1)
-                    ? 'text-accent-400'
-                    : 'text-slate-400 hover:text-slate-100'
-                }`}
-              >
-                {link.name}
-              </button>
-            ))}
-            <button 
-              onClick={() => scrollToSection('#contact')}
-              className="px-5 py-2 text-sm font-semibold text-slate-950 bg-accent-400 rounded-full hover:bg-accent-500 transition-all shadow-[0_0_15px_rgba(56,189,248,0.3)] hover:shadow-[0_0_25px_rgba(56,189,248,0.5)]"
-            >
-              Contato
-            </button>
-          </nav>
-
-          {/* Mobile Menu Button */}
-          <button 
-            className="md:hidden p-2 text-slate-300 hover:text-white"
-            onClick={toggleMenu}
-            aria-label="Alternar menu"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
+  useEffect(() => {
+    if (!open) return;
+    const focusFrame = window.requestAnimationFrame(() => headerRef.current?.querySelector<HTMLAnchorElement>('.main-nav a')?.focus());
+    const onKey = (event: KeyboardEvent) => { if (event.key === 'Escape') { setOpen(false); toggleRef.current?.focus(); } };
+    const onPointer = (event: PointerEvent) => { if (!headerRef.current?.contains(event.target as Node)) setOpen(false); };
+    const onResize = () => { if (window.innerWidth > 1000) setOpen(false); };
+    document.addEventListener('keydown', onKey);
+    document.addEventListener('pointerdown', onPointer);
+    window.addEventListener('resize', onResize);
+    return () => {
+      window.cancelAnimationFrame(focusFrame);
+      document.removeEventListener('keydown', onKey);
+      document.removeEventListener('pointerdown', onPointer);
+      window.removeEventListener('resize', onResize);
+    };
+  }, [open]);
+  return <header className="site-header" ref={headerRef} onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget as Node)) setOpen(false); }}>
+    <div className="shell header-inner">
+      <a href="#hero" className="wordmark" aria-label="Weslley Carlos" onClick={() => setOpen(false)}>wc<span>.</span></a>
+      <nav id="main-navigation" aria-label={t.navigation} className={`main-nav ${open ? 'is-open' : ''}`}>
+        {sections.slice(1).map((id, i) => <a key={id} href={`#${id}`} aria-current={active === id ? 'location' : undefined} onClick={() => setOpen(false)}>{t.nav[i + 1]}{id === 'contact' && <ArrowUpRight size={15} aria-hidden="true" />}</a>)}
+      </nav>
+      <div className="header-actions">
+        <div className="language-switch" role="group" aria-label={t.language}>{languages.map(language => <button key={language.code} type="button" lang={language.code} aria-label={language.name} aria-pressed={locale === language.code} onClick={() => setLocale(language.code)}>{language.label}</button>)}</div>
+        <button ref={toggleRef} className="menu-toggle" type="button" aria-label={open ? t.closeMenu : t.menu} aria-expanded={open} aria-controls="main-navigation" onClick={() => setOpen(!open)}>{open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}</button>
       </div>
-
-      {/* Mobile Nav */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden border-t border-white/5 bg-slate-950/95 backdrop-blur-xl overflow-hidden"
-          >
-            <div className="flex flex-col p-6 space-y-4">
-              {NAV_LINKS.map((link) => (
-                <button
-                  key={link.name}
-                  onClick={() => scrollToSection(link.href)}
-                  className={`text-left text-lg font-medium ${
-                    activeSection === link.href.substring(1)
-                      ? 'text-accent-400'
-                      : 'text-slate-400'
-                  }`}
-                >
-                  {link.name}
-                </button>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </header>
-  );
-};
+    </div>
+  </header>;
+}

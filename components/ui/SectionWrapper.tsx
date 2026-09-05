@@ -1,36 +1,8 @@
-import React, { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
-
-interface SectionWrapperProps {
-  id: string;
-  className?: string;
-  children: React.ReactNode;
-  width?: 'full' | 'constrained';
+import type { ReactNode } from 'react';
+interface SectionWrapperProps { id: string; className?: string; children: ReactNode; }
+export function SectionWrapper({ id, children, className = '' }: SectionWrapperProps) {
+  return <section id={id} aria-labelledby={`${id}-title`} className={`section ${className}`}><div className="shell">{children}</div></section>;
 }
-
-export const SectionWrapper: React.FC<SectionWrapperProps> = ({ 
-  id, 
-  children, 
-  className = '',
-  width = 'constrained'
-}) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  return (
-    <section id={id} className={`relative py-20 md:py-32 overflow-hidden ${className}`}>
-      <div 
-        ref={ref}
-        className={`relative z-10 mx-auto px-6 sm:px-8 ${width === 'constrained' ? 'max-w-7xl' : 'w-full'}`}
-      >
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          {children}
-        </motion.div>
-      </div>
-    </section>
-  );
-};
+export function SectionHeading({ id, kicker, title, emphasis }: { id: string; kicker: string; title: string; emphasis: string }) {
+  return <div className="section-heading"><p className="section-kicker">{kicker}</p><h2 id={`${id}-title`}>{title}<br /><em>{emphasis}</em></h2></div>;
+}

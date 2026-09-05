@@ -1,80 +1,22 @@
-import React from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
-
-export const Hero: React.FC = () => {
-  const { scrollY } = useScroll();
-  const y1 = useTransform(scrollY, [0, 500], [0, 200]);
-  const y2 = useTransform(scrollY, [0, 500], [0, -150]);
-
-  return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Background Elements */}
-      <motion.div 
-        style={{ y: y1, opacity: useTransform(scrollY, [0, 300], [1, 0]) }}
-        className="absolute top-20 right-[10%] w-64 h-64 bg-blue-500/10 rounded-full blur-3xl"
-      />
-      <motion.div 
-        style={{ y: y2, opacity: useTransform(scrollY, [0, 300], [1, 0]) }}
-        className="absolute bottom-20 left-[10%] w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl"
-      />
-
-      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 text-center">
-        
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <div className="inline-block mb-4 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
-            <span className="text-sm font-medium text-accent-400">Pronto para novos desafios e projetos legais</span>
-          </div>
-        </motion.div>
-
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight mb-6"
-        >
-          Desenvolvedor
-          <br />
-          <span className="text-gradient text-3xl md:text-5xl lg:text-6xl block mt-4">Full-Stack</span>
-        </motion.h1>
-
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="max-w-2xl mx-auto text-lg md:text-xl text-slate-400 mb-10 leading-relaxed"
-        >
-          Desenvolvendo ideias e transformando código em soluções reais.
-          <br className="hidden md:block" />
-          Busco criar interfaces modernas e aplicações que fazem sentido de verdade para quem usa.
-        </motion.p>
-
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
-        >
-          <button 
-            onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-            className="w-full sm:w-auto px-8 py-4 bg-slate-100 text-slate-950 font-bold rounded-full hover:bg-white transition-all flex items-center justify-center gap-2 group"
-          >
-            Ver Projetos
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </button>
-          
-          <button 
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            className="w-full sm:w-auto px-8 py-4 bg-white/5 text-white font-semibold rounded-full border border-white/10 hover:bg-white/10 transition-all flex items-center justify-center gap-2 backdrop-blur-sm"
-          >
-            Entrar em Contato
-          </button>
-        </motion.div>
+import { ArrowDown, ArrowDownRight, ArrowUpRight } from 'lucide-react';
+import { useLanguage } from '../i18n';
+export function Hero() {
+  const { t } = useLanguage();
+  return <section id="hero" className="hero"><div className="shell">
+    <div className="hero-topline"><span className="eyebrow"><span className="status-dot" />{t.hero.label}</span><span className="hero-edition">WESLLEY CARLOS / PORTFOLIO</span></div>
+    <div className="hero-grid">
+      <div className="hero-main">
+        <h1>{t.hero.line1}<br />{t.hero.line2}<br /><em>{t.hero.line3}</em></h1>
+        <p className="hero-intro">{t.hero.intro}</p>
+        <div className="hero-links"><a href="#projects" className="button button-dark">{t.hero.projects}<ArrowDownRight size={19} aria-hidden="true" /></a><a href="#contact" className="text-link">{t.hero.contact}<ArrowUpRight size={18} aria-hidden="true" /></a></div>
       </div>
-    </section>
-  );
-};
+      <aside className="profile-note" aria-label="Weslley Carlos">
+        <div className="profile-top"><span>WC / DEV</span><ArrowUpRight size={25} aria-hidden="true" /></div>
+        <div className="profile-name">Weslley<br />Carlos<span>.</span></div><p className="profile-role">{t.hero.role}</p>
+        <dl><div><dt>{t.hero.focusLabel}</dt><dd>{t.hero.focus}</dd></div><div><dt>{t.hero.exploringLabel}</dt><dd>{t.hero.exploring}</dd></div></dl>
+        <div className="profile-bottom"><span className="status-dot" />{t.hero.location}<span>FULL-STACK</span></div>
+      </aside>
+    </div>
+    <div className="hero-bottom"><p>{t.hero.note}</p><a href="#projects">{t.hero.scroll}<ArrowDown size={16} aria-hidden="true" /></a></div>
+  </div></section>;
+}

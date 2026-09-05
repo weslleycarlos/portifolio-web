@@ -1,16 +1,6 @@
-import React from 'react';
-
-export const Footer: React.FC = () => {
-  const year = new Date().getFullYear();
-  
-  return (
-    <footer className="py-8 border-t border-white/5 bg-slate-950">
-      <div className="max-w-7xl mx-auto px-6 text-center">
-        <p className="text-slate-500 text-sm">
-          © {year} Desenvolvido com <span className="text-accent-400">React</span> & <span className="text-accent-400">Tailwind</span>.
-          <br className="sm:hidden" /> Todos os direitos reservados.
-        </p>
-      </div>
-    </footer>
-  );
-};
+import { ArrowUpRight } from 'lucide-react';
+import { useLanguage } from '../i18n';
+export function Footer() {
+  const { content: { footer: t } } = useLanguage();
+  return <footer className="site-footer"><div className="shell footer-top"><a href="#hero" className="footer-name">Weslley Carlos<span>.</span></a><span>{t.role}</span><a href="#hero" className="text-link">{t.back}<ArrowUpRight size={18} aria-hidden="true" /></a></div><div className="shell footer-bottom"><span>© {new Date().getFullYear()} Weslley Carlos de Morais</span><span>{t.rights}</span></div></footer>;
+}
